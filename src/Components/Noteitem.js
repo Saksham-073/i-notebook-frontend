@@ -15,7 +15,7 @@ const Noteitem = (props) => {
                 </div>
                 <div className="px-6 py-4">
                     <i className="fa-solid fa-pen-to-square mx-2" onClick={() => { updateNote(note) }}></i>
-                    <i className="fa-solid fa-trash mx-2" onClick={() => { deletenote(note._id) }}></i>
+                    <i className="fa-solid fa-trash mx-2 " onClick={() => { deletenote(note._id) }}></i>
                 </div>
             </div>
             

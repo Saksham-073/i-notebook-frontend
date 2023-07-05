@@ -4,7 +4,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link, useNavigate } from 'react-router-dom'
 
 const navigation = [
-  { name: 'Dashboard', to: '/home', current: true },
+  { name: 'Dashboard', to: '/home', current: false },
   { name: 'Notes', to: '/notes', current: false },
   { name: 'About', to: '/about', current: false }
 ]
@@ -56,8 +56,7 @@ export default function Example() {
                           item.current ? 'text-gray-200 hover:bg-zinc-800 hover:text-white' : 'text-gray-200 hover:bg-zinc-800 hover:text-white',
                           'rounded-md px-3 py-2 text-sm font-medium'
                         )}
-                        aria-current={item.current ? 'page' : undefined}
-                      >
+                        aria-current={item.current ? 'page' : undefined}>
                         {item.name}
                       </Link>
                     ))}
@@ -100,7 +99,7 @@ export default function Example() {
                       <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                         <Menu.Item>
                           {({ active }) => (
-                            <Link to="/"
+                            <Link to="/" 
                               className={classNames(active ? 'bg-gray-200' : '', 'block px-4 py-2 text-sm text-gray-700')}>
                               Your Profile
                             </Link>
@@ -109,7 +108,7 @@ export default function Example() {
                         
                         <Menu.Item>
                           {({ active }) => (
-                            <Link to="/Signin" className={classNames(active ? 'bg-red-200' : '', 'block px-4 py-2 text-sm text-gray-700 hover:text-red-600')} onClick={handleLogout}>
+                            <Link to="/Signin"  className={classNames(active ? 'bg-red-200' : '', 'block px-4 py-2 text-sm text-gray-700 hover:text-red-600')} onClick={handleLogout}>
                               Logout
                             </Link>
                           )}
@@ -126,8 +125,8 @@ export default function Example() {
               {navigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}
-                  as="a"
-                  href={item.href}
+                  as="Link"
+                  to={item.href}
                   className={classNames(
                     item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                     'block rounded-md px-3 py-2 text-base font-medium'
