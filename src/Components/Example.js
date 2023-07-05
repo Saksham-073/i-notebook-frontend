@@ -101,7 +101,7 @@ export default function Example() {
                         <Menu.Item>
                           {({ active }) => (
                             <Link to="/"
-                              className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}>
+                              className={classNames(active ? 'bg-gray-200' : '', 'block px-4 py-2 text-sm text-gray-700')}>
                               Your Profile
                             </Link>
                           )}
@@ -109,7 +109,7 @@ export default function Example() {
                         
                         <Menu.Item>
                           {({ active }) => (
-                            <Link to="/Signin" className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')} onClick={handleLogout}>
+                            <Link to="/Signin" className={classNames(active ? 'bg-red-200' : '', 'block px-4 py-2 text-sm text-gray-700 hover:text-red-600')} onClick={handleLogout}>
                               Logout
                             </Link>
                           )}
