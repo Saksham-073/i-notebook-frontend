@@ -7,18 +7,18 @@ const navigation = [
   { name: 'Dashboard', to: '/home', current: false },
   { name: 'Notes', to: '/notes', current: false },
   { name: 'About', to: '/about', current: false },
-  { name: '', to: '/dashboard', current: false }
 ]
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Example() {
+export default function Example(props) {
   let navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem('token');
     navigate('/Signin')
+    
   }
   return (
     <Disclosure as="nav" className="bg-neutral-900">
@@ -100,14 +100,14 @@ export default function Example() {
                       <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                         <Menu.Item>
                           {({ active }) => (
-                            <Link to="/" 
+                            <Link to="/profile" 
                               className={classNames(active ? 'bg-gray-200' : '', 'block px-4 py-2 text-sm text-gray-700')}>
                               Your Profile
                             </Link>
                           )}
                         </Menu.Item>
                         
-                        <Menu.Item>
+                        <Menu.Item >
                           {({ active }) => (
                             <Link to="/Signin"  className={classNames(active ? 'bg-red-200' : '', 'block px-4 py-2 text-sm text-gray-700 hover:text-red-600')} onClick={handleLogout}>
                               Logout

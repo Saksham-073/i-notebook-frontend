@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-const Signup = () => {
+const Signup = (props) => {
 
   const [credentials, setcredentials] = useState({ name: "", email: "", password: "", cpassword: "" })
   let navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    props.setprogress(10);
     const { name, email, password } = credentials;
     const response = await fetch("https://i-notebook-wsj6.onrender.com/api/auth/createuser", {
       method: 'POST',
@@ -25,6 +26,7 @@ const Signup = () => {
   else {
     alert("Invalid credentials");
   }
+  props.setprogress(100);
   }
 
   const onChange = (e) => {

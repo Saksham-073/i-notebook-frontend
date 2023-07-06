@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-const Signin = () => {
+const Signin = (props) => {
   const [credentials, setcredentials] = useState({ email: "", password: "" })
   let navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {    
     e.preventDefault();
-
+    props.setprogress(10);
     const response = await fetch("https://i-notebook-wsj6.onrender.com/api/auth/login", {
       method: 'POST',
       headers: {
@@ -15,6 +15,7 @@ const Signin = () => {
       },
       body: JSON.stringify({ email: credentials.email, password: credentials.password })
     });
+    
     const json = await response.json()
     if (json.success) {
       // Save the auth token and redirect
@@ -24,11 +25,13 @@ const Signin = () => {
     else {
       alert("Invalid credentials");
     }
+    props.setprogress(100)
   }
 
   const onChange = (e) => {
     setcredentials({ ...credentials, [e.target.name]: e.target.value })
   }
+  
 
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -65,7 +68,7 @@ const Signin = () => {
           </div>
 
           <div>
-            <button type="submit"
+            <button type="submit" 
               className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
               Sign in
             </button>
